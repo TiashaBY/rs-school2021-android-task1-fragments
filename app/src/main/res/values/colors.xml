@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mintColorPrimary">#76be2f</color>
+    <color name="mintColorAccent">#f9a825</color>
+    <color name="mintPrimaryText">#424242</color>
+    <color name="mintButton">#76be2f</color>
+    <color name="mintButtonText">#EEEEEE</color>
+    <color name="mintBackground">#EEEEEE</color>
 </resources>
