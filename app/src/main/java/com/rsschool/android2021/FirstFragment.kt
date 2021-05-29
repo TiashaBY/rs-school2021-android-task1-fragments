@@ -47,11 +47,11 @@ class FirstFragment : Fragment() {
         maxTextEdit = view.findViewById(R.id.max_value)
 
         generateButton?.setOnClickListener {
-            val min by lazy { minTextEdit!!.text.toString().toInt()}
-            val max by lazy { maxTextEdit!!.text.toString().toInt()}
             if (isTextEditEmpty(minTextEdit) || isTextEditEmpty(maxTextEdit)) {
                 return@setOnClickListener
             }
+            val min = minTextEdit!!.text.toString().toInt()
+            val max = maxTextEdit!!.text.toString().toInt()
             if (min > max) {
                 showToastOnTop("Min value should be less than max value!")
                 return@setOnClickListener
@@ -70,7 +70,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun showToastOnTop(message: String) {
-        var toast = Toast.makeText(
+        val toast = Toast.makeText(
             context, message, Toast.LENGTH_SHORT
         )
         toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 100)
