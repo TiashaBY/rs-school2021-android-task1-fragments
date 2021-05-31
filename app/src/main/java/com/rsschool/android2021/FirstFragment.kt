@@ -19,12 +19,12 @@ class FirstFragment : Fragment() {
     private var previousResult: TextView? = null
     private var minTextEdit: EditText? = null
     private var maxTextEdit: EditText? = null
-    private var listener : ButtonClickedListener? = null
+    private var listener : FragmentCommunicationListener? = null
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        listener = context as ButtonClickedListener
+        listener = context as FragmentCommunicationListener
     }
 
     override fun onCreateView(
@@ -41,7 +41,7 @@ class FirstFragment : Fragment() {
         generateButton = view.findViewById(R.id.generate)
 
         val result = arguments?.getInt(PREVIOUS_RESULT_KEY)
-        previousResult?.text = "Previous result: ${result.toString()}"
+        previousResult?.text = getString(R.string.result_label, result.toString())
 
         minTextEdit = view.findViewById(R.id.min_value)
         maxTextEdit = view.findViewById(R.id.max_value)
@@ -53,7 +53,7 @@ class FirstFragment : Fragment() {
             val min = minTextEdit!!.text.toString().toInt()
             val max = maxTextEdit!!.text.toString().toInt()
             if (min > max) {
-                showToastOnTop("Min value should be less than max value!")
+                showToastOnTop(getString(R.string.value_error))
                 return@setOnClickListener
             }
             listener?.onGenerateButtonClicked(min, max)
@@ -61,8 +61,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun isTextEditEmpty(editField: EditText?) : Boolean {
-        return if (editField!!.text.toString() == "") {
-            showToastOnTop("Fill in both fields!")
+        return if (editField!!.text.toString().isEmpty()) {
+            showToastOnTop(getString(R.string.empty_field_error))
             true
         } else {
             false
@@ -89,9 +89,5 @@ class FirstFragment : Fragment() {
         }
 
         private const val PREVIOUS_RESULT_KEY = "PREVIOUS_RESULT"
-    }
-
-    interface ButtonClickedListener {
-        fun onGenerateButtonClicked(min: Int, max: Int)
     }
 }

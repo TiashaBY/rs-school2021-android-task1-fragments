@@ -14,11 +14,11 @@ class SecondFragment : Fragment() {
 
     private var backButton: Button? = null
     private var result: TextView? = null
-    private var listener: ButtonBackClickedListener? = null
+    private var listener: FragmentCommunicationListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        listener = context as ButtonBackClickedListener
+        listener = context as FragmentCommunicationListener
     }
 
         override fun onCreateView(
@@ -72,9 +72,5 @@ class SecondFragment : Fragment() {
 
         private const val MIN_VALUE_KEY = "MIN_VALUE"
         private const val MAX_VALUE_KEY = "MAX_VALUE"
-    }
-
-    interface ButtonBackClickedListener{
-        fun onBackButtonClicked(result: Int)
     }
 }

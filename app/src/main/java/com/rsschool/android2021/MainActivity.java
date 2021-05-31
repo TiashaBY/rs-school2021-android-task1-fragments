@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements
-        FirstFragment.ButtonClickedListener, SecondFragment.ButtonBackClickedListener {
+        FragmentCommunicationListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
